@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pakohuone.Data;
+using Pakohuone.Models;
 
 namespace Pakohuone
 {
@@ -18,6 +19,10 @@ namespace Pakohuone
 
         public void ConfigureServices(IServiceCollection services)
         {
+            var pakohuoneConfiguration = new PakohuoneConfiguration();
+            Configuration.Bind("Pakohuone", pakohuoneConfiguration);
+            services.AddSingleton(pakohuoneConfiguration);
+
             services.AddDbContext<PakohuoneContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("Pakohuone")));
 
