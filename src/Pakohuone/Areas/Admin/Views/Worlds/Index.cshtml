@@ -1,0 +1,30 @@
+﻿@model List<World>
+
+@{
+    ViewData["Title"] = "Worlds";
+}
+
+<div class="row">
+    <div class="col">
+        <table id="world-table" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(model => model[0].Name)</th>
+                    <th scope="col">@Html.DisplayNameFor(model => model[0].Time)</th>
+                    <th data-orderable="false"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var world in Model)
+                {
+                    <tr>
+                        <td>@world.Name</td>
+                        <td>@world.Time</td>
+                        <td>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

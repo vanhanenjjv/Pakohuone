@@ -1,0 +1,32 @@
+﻿@model List<Room>
+
+@{
+    ViewData["Title"] = "Rooms";
+}
+
+<div class="row">
+    <div class="col">
+        <table id="room-table" class="table">
+            <thead>
+                <tr>
+                    <th scope="col" data-type="Room">@Html.DisplayNameFor(model => model[0].Name)</th>
+                    <th scope="col" data-type="Level">@Html.DisplayNameFor(model => model[0].Level)</th>
+                    <th scope="col" data-type="World">@Html.DisplayNameFor(model => model[0].World)</th>
+                    <th data-orderable="false"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var room in Model)
+                {
+                    <tr>
+                        <td>@room.Name</td>
+                        <td>@room.Level?.Name</td>
+                        <td>@room.World?.Name</td>
+                        <td>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <title>Pakohuone</title>
+
     @*Bootstrap 4.3.1*@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     @*DataTables (Bootstrap 4) 1.10.19*@
@@ -23,35 +25,45 @@
             </div>
             <div id="sidebar-body">
                 <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action"
+                       conditional-class-bg-light="@(ViewBag.ExecutedController != typeof(WorldsController))"
+                       conditional-class-active="@(ViewBag.ExecutedController == typeof(WorldsController))"
+                       asp-area="Admin"
+                       asp-controller="Worlds"
+                       asp-action="Index">Worlds</a>
+                    <a class="list-group-item list-group-item-action"
+                       conditional-class-bg-light="@(ViewBag.ExecutedController != typeof(RoomsController))"
+                       conditional-class-active="@(ViewBag.ExecutedController == typeof(RoomsController))"
+                       asp-area="Admin"
+                       asp-controller="Rooms"
+                       asp-action="Index">Rooms</a>
+                    <a class="list-group-item list-group-item-action"
+                       conditional-class-bg-light="@(ViewBag.ExecutedController != typeof(LevelsController))"
+                       conditional-class-active="@(ViewBag.ExecutedController == typeof(LevelsController))"
+                       asp-area="Admin"
+                       asp-controller="Levels"
+                       asp-action="Index">Levels</a>
                 </div>
             </div>
-
             <div id="sidebar-footer" class="border-top">
                 <div class="list-group list-group-flush">
                 </div>
             </div>
         </div>
-
         <div id="page">
-
             <div id="page-toolbar" class="container-fluid align-items-center d-flex border-bottom bg-light">
                 <button id="sidebar-toggle" class="btn btn-light">
                     <i class="fas fa-bars"></i>
                 </button>
-
                 <h4 class="ml-3 mr-auto mb-0">@ViewBag.Title</h4>
-
                 <div>
                     @RenderSection("ToolbarActions", false)
                 </div>
             </div>
-
             <main id="page-content" class="container-fluid mt-3">
                 @RenderBody()
             </main>
-
         </div>
-
     </div>
 
     @*JQuery 3.4.1*@
