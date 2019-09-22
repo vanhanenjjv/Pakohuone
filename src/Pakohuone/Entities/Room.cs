@@ -7,8 +7,11 @@ namespace Pakohuone.Entities
         [Key]
         public int Id { get; set; }
 
+        [DataType(DataType.Text)]
+        [Required]
         public string Name { get; set; }
 
+        [Required]
         public World World { get; set; }
 
         public Level Level { get; set; }
