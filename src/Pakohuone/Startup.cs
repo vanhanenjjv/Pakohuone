@@ -46,7 +46,7 @@ namespace Pakohuone
             {
                 routes.MapRoute(
                     name: "areas",
-                    template: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+                    template: "{area:exists}/{controller}/{action=Index}/{id?}");
             });
         }
     }
