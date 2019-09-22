@@ -1,0 +1,12 @@
+﻿@model TypeInfo
+
+@{
+    string controllerName = Model.Name.Replace("Controller", string.Empty);
+}
+
+<a class="list-group-item list-group-item-action"
+   conditional-class-bg-light="@(ViewBag.ExecutedController != Model)"
+   conditional-class-active="@(ViewBag.ExecutedController == Model)"
+   asp-area="Admin"
+   asp-controller="@controllerName"
+   asp-action="Index">@controllerName</a>

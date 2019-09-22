@@ -25,24 +25,10 @@
             </div>
             <div id="sidebar-body">
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action"
-                       conditional-class-bg-light="@(ViewBag.ExecutedController != typeof(WorldsController))"
-                       conditional-class-active="@(ViewBag.ExecutedController == typeof(WorldsController))"
-                       asp-area="Admin"
-                       asp-controller="Worlds"
-                       asp-action="Index">Worlds</a>
-                    <a class="list-group-item list-group-item-action"
-                       conditional-class-bg-light="@(ViewBag.ExecutedController != typeof(RoomsController))"
-                       conditional-class-active="@(ViewBag.ExecutedController == typeof(RoomsController))"
-                       asp-area="Admin"
-                       asp-controller="Rooms"
-                       asp-action="Index">Rooms</a>
-                    <a class="list-group-item list-group-item-action"
-                       conditional-class-bg-light="@(ViewBag.ExecutedController != typeof(LevelsController))"
-                       conditional-class-active="@(ViewBag.ExecutedController == typeof(LevelsController))"
-                       asp-area="Admin"
-                       asp-controller="Levels"
-                       asp-action="Index">Levels</a>
+                    @foreach (var controllerType in new[] { typeof(WorldsController), typeof(RoomsController), typeof(LevelsController) })
+                    {
+                        <partial name="_SidebarItemPartial" model="controllerType" />
+                    }
                 </div>
             </div>
             <div id="sidebar-footer" class="border-top">
