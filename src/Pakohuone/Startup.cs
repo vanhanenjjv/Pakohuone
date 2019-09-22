@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pakohuone.Data;
 using Pakohuone.Models;
+using Pakohuone.Services;
 
 namespace Pakohuone
 {
@@ -22,6 +23,8 @@ namespace Pakohuone
             var pakohuoneConfiguration = new PakohuoneConfiguration();
             Configuration.Bind("Pakohuone", pakohuoneConfiguration);
             services.AddSingleton(pakohuoneConfiguration);
+
+            services.AddTransient<WorldService>();
 
             services.AddDbContext<PakohuoneContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("Pakohuone")));
