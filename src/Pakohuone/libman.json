@@ -21,6 +21,10 @@
     {
       "library": "datatables.net-bs4@1.10.19",
       "destination": "wwwroot/lib/datatables.net-bs4/"
+    },
+    {
+      "library": "datatables.net@1.10.19",
+      "destination": "wwwroot/lib/datatables.net/"
     }
   ]
 }
