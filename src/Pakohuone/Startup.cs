@@ -24,6 +24,7 @@ namespace Pakohuone
             services.AddSingleton(pakohuoneConfiguration);
 
             services.AddTransient<WorldService>();
+            services.AddTransient<LevelService>();
 
             services.AddDbContext<PakohuoneContext>(options =>
                 options.UseMySql(Configuration.GetConnectionString("Pakohuone")));
