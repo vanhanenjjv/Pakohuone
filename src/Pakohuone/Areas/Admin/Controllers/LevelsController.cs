@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pakohuone.Data;
@@ -19,6 +20,12 @@ namespace Pakohuone.Areas.Admin.Controllers
             var levels = await _pakohuone.Levels.ToListAsync();
 
             return View(levels);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Upload()
+        {
+            throw new NotImplementedException();
         }
     }
 }
