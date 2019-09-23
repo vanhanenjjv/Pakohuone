@@ -23,6 +23,8 @@
                         <td>@room.Level?.Name</td>
                         <td>@room.World?.Name</td>
                         <td>
+                            <a asp-action="Edit"
+                               asp-route-id="@room.Id">Edit</a>
                         </td>
                     </tr>
                 }

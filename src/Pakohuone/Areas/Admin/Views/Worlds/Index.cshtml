@@ -23,6 +23,8 @@
                         <td>@world.Name</td>
                         <td>@world.Time</td>
                         <td>
+                            <a asp-action="Edit"
+                               asp-route-id="@world.Id">Edit</a>
                         </td>
                     </tr>
                 }
