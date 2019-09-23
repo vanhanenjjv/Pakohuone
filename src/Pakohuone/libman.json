@@ -25,6 +25,14 @@
     {
       "library": "datatables.net@1.10.19",
       "destination": "wwwroot/lib/datatables.net/"
+    },
+    {
+      "library": "jquery-validation@1.19.1",
+      "destination": "wwwroot/lib/jquery-validation/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.11",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/"
     }
   ]
 }
