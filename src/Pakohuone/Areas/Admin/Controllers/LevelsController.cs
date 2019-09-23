@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pakohuone.Common;
@@ -6,16 +7,19 @@ using Pakohuone.Data;
 using Pakohuone.Entities;
 using Pakohuone.Extensions;
 using Pakohuone.Models.Bootstrap;
+using Pakohuone.Services;
 
 namespace Pakohuone.Areas.Admin.Controllers
 {
     public class LevelsController : AdminControllerBase
     {
         private readonly PakohuoneContext _pakohuone;
+        private readonly LevelService _levels;
 
-        public LevelsController(PakohuoneContext pakohuone)
+        public LevelsController(PakohuoneContext pakohuone, LevelService levels)
         {
             _pakohuone = pakohuone;
+            _levels = levels;
         }
 
         public async Task<IActionResult> Index()
@@ -64,10 +68,20 @@ namespace Pakohuone.Areas.Admin.Controllers
 
         #endregion
 
+        [DisableRequestSizeLimit]
         [HttpPost]
-        public async Task<IActionResult> Upload()
+        public IActionResult Upload(IFormFile file)
         {
-            throw new NotImplementedException();
+            if (file.ContentType != MediaType.ZipArchive)
+                return BadRequest();
+
+            if (!(_levels.TryAddLevel(file.OpenReadStream(), out Level level)))
+            {
+                TempData.PutAlert(new Alert(GenericMessage.Error, AlertType.Danger));
+                return RedirectToAction(nameof(Index));
+            }
+
+            return RedirectToAction("Edit", new { id = level.Id });
         }
     }
 }
