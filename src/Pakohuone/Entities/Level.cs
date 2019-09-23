@@ -9,7 +9,7 @@ namespace Pakohuone.Entities
         public int Id { get; set; }
 
         [DataType(DataType.Text)]
-        [Required]
+        [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
 
         [Required]

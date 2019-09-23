@@ -9,10 +9,10 @@ namespace Pakohuone.Entities
         public int Id { get; set; }
 
         [DataType(DataType.Text)]
-        [Required]
+        [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
 
-        [Range(0, 240)]
+        [Range(0, 240, ErrorMessage = "Time (in minutes) must be between 0 and 240.")]
         [Required]
         public int Time { get; set; }
 
