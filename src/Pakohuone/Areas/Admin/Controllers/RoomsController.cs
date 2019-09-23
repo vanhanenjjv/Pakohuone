@@ -16,7 +16,10 @@ namespace Pakohuone.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var rooms = await _pakohuone.Rooms.ToListAsync();
+            var rooms = await _pakohuone.Rooms
+                .Include(r => r.World)
+                .Include(r => r.Level)
+                .ToListAsync();
 
             return View(rooms);
         }
