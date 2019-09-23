@@ -11,6 +11,12 @@ namespace Pakohuone.Entities
         [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
 
+        [Display(Name = "World")]
+        public int? WorldId { get; set; }
+
+        [Display(Name = "Level")]
+        public int? LevelId { get; set; }
+
         [Required]
         public World World { get; set; }
 
