@@ -1,0 +1,33 @@
+﻿@model int
+
+<div id="delete-modal"
+     class="modal fade"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="delete-label"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="delete-label" class="modal-title">Confirm deletion</h5>
+                <button class="close"
+                        type="button"
+                        data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form asp-area="Admin"
+                  asp-controller="@(ViewBag.ExecutedController.Name.Replace("Controller", string.Empty))"
+                  asp-action="Delete"
+                  asp-route-id="@Model"
+                  enctype="multipart/form-data"
+                  method="post">
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
